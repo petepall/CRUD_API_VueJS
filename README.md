@@ -1,8 +1,8 @@
 # CRUD_API_VueJS
-Building a CRUD Api with Vuejs from end
+## Building a CRUD Api with Vuejs from end
 
-Front end tech
-    * Vuejs 3
+**_Front end tech_**
+ * Vuejs 3
 
-Back end tech
-    * Nodejs 15
+**_Back end tech_**
+ * Nodejs 15
