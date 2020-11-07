@@ -1,7 +1,7 @@
 <template>
   <Navbar />
-  <div class="container">
-    <router-view/>
+  <div class="container mt-3">
+    <router-view />
   </div>
 </template>
 
@@ -13,8 +13,6 @@ export default {
     Navbar,
   },
 };
-
 </script>
-<style lang="scss">
 
-</style>
+<style lang="scss"></style>

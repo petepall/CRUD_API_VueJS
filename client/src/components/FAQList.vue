@@ -1,6 +1,10 @@
 <template>
   <div>
-    <div class="card mt-3" v-for="faq in faqs" :key="faq._id">
+    <div
+v-for="faq in faqs"
+:key="faq._id"
+class="card mt-3"
+>
       <div class="card-content">
         <div class="media">
           <div class="media-content">
@@ -40,5 +44,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>
