@@ -1,4 +1,4 @@
-# CRUD_API_VueJS
+# CRUD_API_and_VueJS_client
 ## Building a CRUD Api with Vuejs from end
 
 **_Front end tech_**
