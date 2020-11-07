@@ -6,3 +6,11 @@
 
 **_Back end tech_**
  * Nodejs 15
+ * Morgan
+ * Helmet
+ * dotenv
+ _Dev utilities_
+ * nodemon
+ * eslint
+ * mocha
+ * supertest
