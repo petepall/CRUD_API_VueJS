@@ -12,6 +12,11 @@ const routes = [
     name: 'create',
     component: () => import(/* webpackChunkName: "create" */ '../views/Create.vue'),
   },
+  {
+    path: '/update/:id',
+    name: 'update',
+    component: () => import(/* webpackChunkName: "update" */ '../views/Update.vue'),
+  },
 ];
 
 const router = createRouter({
