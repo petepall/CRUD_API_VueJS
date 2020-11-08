@@ -1,10 +1,6 @@
 <template>
   <div>
-    <div
-v-for="faq in faqs"
-:key="faq._id"
-class="card mt-3"
->
+    <div v-for="faq in faqs" :key="faq._id" class="card mt-3">
       <div class="card-content">
         <div class="media">
           <div class="media-content">

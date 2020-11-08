@@ -50,7 +50,7 @@ export default {
         },
         body: JSON.stringify({
           question: question.value,
-          answer: answer.value
+          answer: answer.value,
         }),
       });
       const json = await response.json();
