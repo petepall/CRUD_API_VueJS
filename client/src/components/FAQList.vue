@@ -11,6 +11,21 @@
         <div class="content">
           {{ faq.answer }}
         </div>
+        <button class="button is-success" @click="updateFAQ(faq._id)">
+          <span class="icon is-small">
+            <i class="fas fa-edit"></i>
+          </span>
+          <span>Update</span>
+        </button>
+        <button
+          class="button is-danger is-outlined ml-3"
+          @click="removeFAQ(faq._id)"
+        >
+          <span>Remove</span>
+          <span class="icon is-small">
+            <i class="fas fa-times"></i>
+          </span>
+        </button>
       </div>
     </div>
   </div>
@@ -18,10 +33,12 @@
 
 <script>
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 export default {
   setup() {
     const faqs = ref([]);
+    const router = useRouter();
 
     const API_URL = 'http://localhost:4242/api/v1/faqs';
 
@@ -31,10 +48,28 @@ export default {
       faqs.value = json;
     }
 
+    async function removeFAQ(_id) {
+      await fetch(`${API_URL}/${_id}`, {
+        method: 'DELETE',
+      });
+      getFAQs();
+    }
+
+    async function updateFAQ(_id) {
+      router.push({
+        name: 'update',
+        params: {
+          id: _id
+        }
+      });
+    }
+
     getFAQs();
 
     return {
       faqs,
+      removeFAQ,
+      updateFAQ
     };
   },
 };
