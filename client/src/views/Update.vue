@@ -1,5 +1,9 @@
 <template>
-  <FAQForm :faq="faq" :submit-form="updateFAQ" @update:faq="faq = $event" />
+  <FAQForm v-model="faq" :submit-form="updateFAQ">
+    <template #button>
+      Update
+    </template>
+  </FAQForm>
 </template>
 
 <script>

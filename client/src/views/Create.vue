@@ -1,9 +1,13 @@
 <template>
-  <FAQForm :faq="faq" :submit-form="createFAQ" />
+  <FAQForm v-model="faq" :submit-form="createFAQ" >
+    <template #button>
+      Create
+    </template>
+  </FAQForm>
 </template>
 
 <script>
-import { ref } from 'vue';
+import { reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import FAQForm from '../components/FAQForm.vue';
 
@@ -15,8 +19,10 @@ export default {
 
   setup() {
     const router = useRouter();
-    const question = ref('');
-    const answer = ref('');
+    const faq = reactive({
+      question: '',
+      answer: ''
+    });
     const API_URL = 'http://localhost:4242/api/v1/faqs';
 
     async function createFAQ() {
@@ -26,8 +32,8 @@ export default {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          question: question.value,
-          answer: answer.value,
+          question: faq.question,
+          answer: faq.answer,
         }),
       });
       await response.json();
@@ -39,10 +45,7 @@ export default {
     }
 
     return {
-      faq: {
-        question,
-        answer,
-      },
+      faq,
       createFAQ,
     };
   },

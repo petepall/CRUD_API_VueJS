@@ -4,7 +4,7 @@
       <label class="label">Question</label>
       <div class="control">
         <input
-          v-model="question"
+          v-model="faq.question"
           class="input"
           type="text"
           name="question"
@@ -18,7 +18,7 @@
       <label class="label">Answer</label>
       <div class="control">
         <textarea
-          v-model="answer"
+          v-model="faq.answer"
           class="textarea"
           rows="4"
           placeholder="e.g. Because"
@@ -26,11 +26,14 @@
         ></textarea>
       </div>
     </div>
-    <button type="submit" class="button is-success">Create</button>
+    <button type="submit" class="button is-success">
+      <slot name="button"></slot>
+    </button>
   </form>
 </template>
 
 <script>
+import { computed } from 'vue';
 
 export default {
   props: {
@@ -38,16 +41,25 @@ export default {
       type: Function,
       default: () => {},
     },
-    faq: {
+    modelValue: {
       type: Object,
       default: () => {},
     },
+    // btnTitle: {
+    //   type: String,
+    //   default: ''
+    // }
   },
+  emits: ['update:modelValue'],
 
-  setup(props) {
+  setup(props, { emit }) {
+    const faq = computed({
+      get: () => props.modelValue,
+      set: (value) => emit('update:modelValue', value)
+    });
+
     return {
-      question: props.faq.question,
-      answer: props.faq.answer
+      faq
     };
   },
 };
