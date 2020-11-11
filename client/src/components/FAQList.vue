@@ -32,38 +32,20 @@
 </template>
 
 <script>
-import { useRouter } from 'vue-router';
-
 import useFAQs from '../hooks/useFAQS';
-import API_URL from '../API_URL';
 
 export default {
   setup() {
-    const router = useRouter();
-    const { faqs, getFAQs } = useFAQs();
-
-    async function removeFAQ(_id) {
-      await fetch(`${API_URL}/${_id}`, {
-        method: 'DELETE',
-      });
-      getFAQs();
-    }
-
-    async function updateFAQ(_id) {
-      router.push({
-        name: 'update',
-        params: {
-          id: _id
-        }
-      });
-    }
+    const {
+      faqs, getFAQs, updateFAQ, removeFAQ
+    } = useFAQs();
 
     getFAQs();
 
     return {
       faqs,
       removeFAQ,
-      updateFAQ
+      updateFAQ,
     };
   },
 };
