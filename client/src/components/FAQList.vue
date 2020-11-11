@@ -32,21 +32,15 @@
 </template>
 
 <script>
-import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+
+import useFAQs from '../hooks/useFAQS';
+import API_URL from '../API_URL';
 
 export default {
   setup() {
-    const faqs = ref([]);
     const router = useRouter();
-
-    const API_URL = 'http://localhost:4242/api/v1/faqs';
-
-    async function getFAQs() {
-      const response = await fetch(API_URL);
-      const json = await response.json();
-      faqs.value = json;
-    }
+    const { faqs, getFAQs } = useFAQs();
 
     async function removeFAQ(_id) {
       await fetch(`${API_URL}/${_id}`, {
