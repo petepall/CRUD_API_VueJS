@@ -45,10 +45,6 @@ export default {
       type: Object,
       default: () => {},
     },
-    // btnTitle: {
-    //   type: String,
-    //   default: ''
-    // }
   },
   emits: ['update:modelValue'],
 
