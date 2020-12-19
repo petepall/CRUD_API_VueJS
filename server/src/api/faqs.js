@@ -1,6 +1,9 @@
-const express = require('express');
-const monk = require('monk');
-const Joi = require('joi');
+import { Router } from 'express';
+import monk from 'monk';
+import Joi from 'joi';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const db = monk(process.env.MONGO_URI);
 const faqs = db.get('faqs');
@@ -11,7 +14,7 @@ const schema = Joi.object({
   video_url: Joi.string().uri(),
 });
 
-const router = express.Router();
+const router = Router();
 
 // read all
 router.get('/', async (req, res, next) => {
@@ -80,4 +83,4 @@ router.delete('/:id', async (req, res, next) => {
   }
 });
 
-module.exports = router;
+export default router;
