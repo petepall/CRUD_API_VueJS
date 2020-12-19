@@ -10,6 +10,7 @@
 import { ref } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import FAQForm from '../components/FAQForm.vue';
+import API_URL from '../API_URL';
 
 export default {
   name: 'Update',
@@ -24,7 +25,7 @@ export default {
       question: '',
       answer: '',
     });
-    const API_URL = 'http://localhost:4242/api/v1/faqs';
+    // const API_URL = 'http://localhost:4242/api/v1/faqs';
 
     async function updateFAQ() {
       const { id } = route.params;
